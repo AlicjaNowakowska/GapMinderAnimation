@@ -10,7 +10,7 @@ library(transformr)
 library(tweenr)
 ggplot(gapminder, aes(x = gdpPercap, y=lifeExp, size = pop, colour = country)) + geom_point(aes(x = gdpPercap, y=lifeExp, size = pop, colour = country))
 
-#alpha transparentnoœæ
+#alpha transparentnoî°«
 #scale colour virdis 
 #kolory option = "B"
 #drugi geom point to Polska
@@ -26,7 +26,7 @@ p <- ggplot(
   scale_color_viridis_d(option="B" ) +
   scale_size(range = c(1, 15)) +
   scale_x_log10() +
-  labs(x = "PKB", y = "Oczekwiana d³ugoœæ ¿ycia")+
+  labs(x = "PKB", y = "Oczekwiana dé€goî°« ç¯¡cia")+
   theme_grey(base_size = 18)
 
 #wszytsko razem jak sie porusza
@@ -56,7 +56,7 @@ sama_pl<- ggplot(Polska2,
   geom_text(data=Polska2,label=floor(Polska2$year),size=15,show.legend=FALSE,aes(group = seq_along(Polska2$year)),hjust = 0, vjust = 0)+
   scale_size(range = c(1, 15)) +
   scale_x_log10() +
-  labs(x = "PKB",size=100 ,y = "Oczekwiana d³ugoœæ ¿ycia",size=100)+
+  labs(x = "PKB",size=100 ,y = "Oczekwiana dé€goî°« ç¯¡cia",size=100)+
   theme_grey(base_size = 60)+ggtitle("Polska")
 
 ani_pl<-sama_pl+transition_reveal(year)
@@ -75,7 +75,7 @@ moja_pl<- ggplot(moze,
   geom_text(data=Polska,label=floor(Polska$year),size=7,show.legend=FALSE,aes(group = seq_along(Polska$year)),hjust = 0, vjust = 0)+
   scale_size(range = c(1, 15)) +
   scale_x_log10() +
-  labs(x = "PKB",size=100 ,y = "Oczekwiana d³ugoœæ ¿ycia",size=100)+
+  labs(x = "PKB",size=100 ,y = "Oczekwiana dé€goî°« ç¯¡cia",size=100)+
   theme_grey(base_size = 60)
 
 ani_pl<-moja_pl+
@@ -113,8 +113,8 @@ transition_states(s$grupa)
 animate(ani_s)
 ##################swiat populacja rosnie
 swiat<-map_data("world")
-map<-ggplot()+geom_polygon(data=swiat,aes(x=long,y=lat,group=group),fill="lightblue")+ggtitle("Jak roœnie populacja œwiata")+
-labs(y="szerokoœæ geograficzna",x="d³ugoœæ geograficzna")
+map<-ggplot()+geom_polygon(data=swiat,aes(x=long,y=lat,group=group),fill="lightblue")+ggtitle("Jak roî¯•ie populacja î¯žiata")+
+labs(y="szerokoî°« geograficzna",x="dé€goî°« geograficzna")
 gap=data.frame(region=gapminder$country,pop=gapminder$pop,year=gapminder$year)
 a=distinct(swiat,region,.keep_all=TRUE)
 a=a[,c(1,2,5)]
@@ -130,7 +130,7 @@ mapka + transition_time(year)+labs(title = "Rok: {frame_time}")
 #############################swiat pkb sie zmienia
 swiat<-map_data("world")
 map<-ggplot(data=swiat)+geom_polygon(aes(x=long,y=lat,group=group))+
-ggtitle("Jak roœnie populacja œwiata")
+ggtitle("Jak roî¯•ie populacja î¯žiata")
 
 gap=data.frame(region=gapminder$country,gdp=gapminder$gdpPercap,year=gapminder$year)
 a=swiat[,c(1,2,3,5)]
@@ -139,7 +139,7 @@ moj_r_join=inner_join(gap,a,by="region")
 nowy_swiat<-map+geom_polygon(data = moj_r_join[1:410,], aes(x=long,y=lat,group=group,fill = moj_r_join[1:410,]$gdp),fill="red")+
 scale_color_viridis_d(option="A")
 
-################s³upki
+################sé€pki
 #pytanie 1.1 ile dziewczynek konczy podstawowke- 10% poprawnosci max
 #pytanie 2.9  ile dzieci 1 rok zaszczepionyvh- 30%
 #ile dizeci zostalo zaszczepionych jaki procent
@@ -161,11 +161,11 @@ scale_fill_manual(values=c("red", "blue"))
 
 ############
 data1=data.frame(quest=c("Pytanie1","Pytanie1","Pytanie2","Pytanie2"),resp=c(0,0,0,0),
-gr=c("prawid³owa odp","udzieli³o prawid³owej odp","prawid³owa odp",
-"udzieli³o prawid³owej odp"),frame=rep("a",4))
+gr=c("prawidé€™wa odp","udzielié€™ prawidé€™wej odp","prawidé€™wa odp",
+"udzielié€™ prawidé€™wej odp"),frame=rep("a",4))
 data2=data.frame(quest=c("Pytanie1","Pytanie1","Pytanie2","Pytanie2"),
-resp=c(60,10,80,30),gr=c("prawid³owa odp","udzieli³o prawid³owej odp","prawid³owa odp",
-"udzieli³o prawid³owej odp"),frame=rep("b",4))
+resp=c(60,10,80,30),gr=c("prawidé€™wa odp","udzielié€™ prawidé€™wej odp","prawidé€™wa odp",
+"udzielié€™ prawidé€™wej odp"),frame=rep("b",4))
 data=rbind(data1,data2)
 
 ts <- list(data1, data2, data1)
@@ -177,7 +177,7 @@ geom_bar(stat = "Identity",position="Identity")+
 transition_reveal(resp)+  
 ease_aes('linear')+
 facet_wrap(~quest,drop=TRUE)+
-scale_fill_manual(values=c("blue", "green"),labels=c("prawid³owa odp","ilu udzieli³o takiej"))+
+scale_fill_manual(values=c("blue", "green"),labels=c("prawidé€™wa odp","ilu udzielié€™ takiej"))+
 xlab(element_blank())+
 ylab("Procent")+theme_grey(base_size = 28)+
 theme(legend.position="top",legend.title=element_blank(), 
